@@ -1,0 +1,34 @@
+{
+    "wortEintraege": [
+        {
+            "pictureUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Harzer_Fuchs_H%C3%BCndin_2.jpg",
+            "word": "Hund",
+            "url": "https://de.wikipedia.org/wiki/Hunde"
+        },
+        {
+            "pictureUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Pallas_cat.JPG/2880px-Pallas_cat.JPG",
+            "word": "Katze",
+            "url": "https://de.wikipedia.org/wiki/Katzen"
+        },
+        {
+            "pictureUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Crested_Tern_Tasmania_%28edit%29.jpg/600px-Crested_Tern_Tasmania_%28edit%29.jpg",
+            "word": "Vogel",
+            "url": "https://de.wikipedia.org/wiki/V%C3%B6gel"
+        },
+        {
+            "pictureUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Serengeti_Elefantenherde1.jpg/600px-Serengeti_Elefantenherde1.jpg",
+            "word": "Elefant",
+            "url": "https://de.wikipedia.org/wiki/Elefanten"
+        },
+        {
+            "pictureUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/011_The_lion_king_Tryggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg/600px-011_The_lion_king_Tryggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg",
+            "word": "Löwe",
+            "url": "https://de.wikipedia.org/wiki/L%C3%B6we"
+        }
+    ],
+    "statistics": {
+        "Incorrect answers": 1,
+        "Total questions asked": 5,
+        "Correct answers": 4
+    }
+}

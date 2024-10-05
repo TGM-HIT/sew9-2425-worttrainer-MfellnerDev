@@ -27,6 +27,18 @@ public class TrainerStats {
         return totalASkedQuestions;
     }
 
+    public void setCorrectAnswers(int correctAnswers) {
+        this.correctAnswers = correctAnswers;
+    }
+
+    public void setWrongAnswers(int wrongAnswers) {
+        this.wrongAnswers = wrongAnswers;
+    }
+
+    public void setTotalASkedQuestions(int totalASkedQuestions) {
+        this.totalASkedQuestions = totalASkedQuestions;
+    }
+
     @Override
     public String toString() {
         return "TrainerStats{" +

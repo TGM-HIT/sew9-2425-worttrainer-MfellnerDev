@@ -33,5 +33,5 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.worttrainer.App"
+    mainClass = "org.worttrainer.controller.WortTrainerController"
 }
