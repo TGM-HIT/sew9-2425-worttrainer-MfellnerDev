@@ -42,7 +42,7 @@ public class FileHandler {
         JSONObject statsObj = new JSONObject();
         statsObj.put("Incorrect answers", trainer.getTrainerStats().getWrongAnswers());
         statsObj.put("Correct answers", trainer.getTrainerStats().getCorrectAnswers());
-        statsObj.put("Total questions asked", trainer.getTrainerStats().getTotalASkedQuestions());
+        statsObj.put("Total questions asked", trainer.getTrainerStats().getTotalAskedQuestions());
         trainerObj.put("statistics", statsObj);
 
         // write to file
@@ -85,7 +85,7 @@ public class FileHandler {
         TrainerStats stats = new TrainerStats();
         stats.setCorrectAnswers(correctAnswers);
         stats.setWrongAnswers(wrongAnswers);
-        stats.setTotalASkedQuestions(totalQuestions);
+        stats.setTotalAskedQuestions(totalQuestions);
 
         trainer.setTrainerStats(stats);
     }

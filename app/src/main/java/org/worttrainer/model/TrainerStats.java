@@ -9,16 +9,16 @@ package org.worttrainer.model;
 public class TrainerStats {
     private int correctAnswers = 0;
     private int wrongAnswers = 0;
-    private int totalASkedQuestions = 0;
+    private int totalAskedQuestions = 0;
 
     public void increaseCorrectAnswers() {
         correctAnswers++;
-        totalASkedQuestions++;
+        totalAskedQuestions++;
     }
 
     public void increaseWrongAnswers() {
         wrongAnswers++;
-        totalASkedQuestions++;
+        totalAskedQuestions++;
     }
 
     public int getCorrectAnswers() {
@@ -29,8 +29,8 @@ public class TrainerStats {
         return wrongAnswers;
     }
 
-    public int getTotalASkedQuestions() {
-        return totalASkedQuestions;
+    public int getTotalAskedQuestions() {
+        return totalAskedQuestions;
     }
 
     public void setCorrectAnswers(int correctAnswers) {
@@ -41,8 +41,8 @@ public class TrainerStats {
         this.wrongAnswers = wrongAnswers;
     }
 
-    public void setTotalASkedQuestions(int totalASkedQuestions) {
-        this.totalASkedQuestions = totalASkedQuestions;
+    public void setTotalAskedQuestions(int totalASkedQuestions) {
+        this.totalAskedQuestions = totalASkedQuestions;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class TrainerStats {
         return "TrainerStats{" +
                 "correctAnswers=" + correctAnswers +
                 ", wrongAnswers=" + wrongAnswers +
-                ", totalASkedQuestions=" + totalASkedQuestions +
+                ", totalASkedQuestions=" + totalAskedQuestions +
                 '}';
     }
 }

@@ -78,7 +78,7 @@ public class WortTrainer {
         String statsMessage = "Statistiken:\n" +
                 "Richtige Antworten: " + trainerStats.getCorrectAnswers() + "\n" +
                 "Falsche Antworten: " + trainerStats.getWrongAnswers() + "\n" +
-                "Insgesamt gestellte Fragen: " + trainerStats.getTotalASkedQuestions();
+                "Insgesamt gestellte Fragen: " + trainerStats.getTotalAskedQuestions();
         JOptionPane.showMessageDialog(null, statsMessage, "Statistiken", JOptionPane.INFORMATION_MESSAGE);
     }
 
