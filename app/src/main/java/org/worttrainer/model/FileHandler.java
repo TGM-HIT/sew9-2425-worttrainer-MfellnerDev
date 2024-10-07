@@ -12,69 +12,71 @@ import java.util.List;
 
 /**
  * @author Manuel Fellner
- * @version 20.09.2024
+ * @version 07.10.2024
  */
 public class FileHandler {
 
-    // Pfad zur Datei
+    // path to the save file, only in the project itself
     private static final String FILE_PATH = "/src/main/resources/wortEintraege.json";
 
-    // Trainer-Daten speichern (Wortliste und Statistik)
+    /**
+     * Save the trainer data to a JSON File
+     * @param trainer trainer instance
+     * @throws IOException
+     */
     public static void saveTrainer(WortTrainer trainer) throws IOException {
-        // JSON-Objekt für die gesamte Struktur
         JSONObject trainerObj = new JSONObject();
 
-        // WortEinträge speichern
+        // Save WortEinträge
         JSONArray wortEintraegeArray = new JSONArray();
         List<WortEintrag> wortListe = trainer.getWortListe();
         for (WortEintrag wortEintrag : wortListe) {
             JSONObject wortEintragObj = new JSONObject();
             wortEintragObj.put("word", wortEintrag.getWord());
             wortEintragObj.put("url", wortEintrag.getUrl());
-            wortEintragObj.put("pictureUrl", wortEintrag.getPictureUrl());
             wortEintraegeArray.put(wortEintragObj);
         }
         trainerObj.put("wortEintraege", wortEintraegeArray);
 
-        // Statistik speichern (ohne Array, direktes Objekt)
+        // save the statistics
         JSONObject statsObj = new JSONObject();
         statsObj.put("Incorrect answers", trainer.getTrainerStats().getWrongAnswers());
         statsObj.put("Correct answers", trainer.getTrainerStats().getCorrectAnswers());
         statsObj.put("Total questions asked", trainer.getTrainerStats().getTotalASkedQuestions());
         trainerObj.put("statistics", statsObj);
 
-        // In Datei schreiben
+        // write to file
         try (FileWriter file = new FileWriter(new java.io.File(".").getCanonicalPath() + FILE_PATH)) {
-            file.write(trainerObj.toString(4));  // Formatierter JSON-Output
-            System.out.println("Worttrainer erfolgreich gespeichert!");
+            file.write(trainerObj.toString(4));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Cannot save game! Some error occured: " + e.getMessage());
         }
     }
 
-    // Trainer-Daten laden (Wortliste und Statistik)
+    /**
+     * Load the trainer data from JSON
+     * @param trainer trainer instance to save the data
+     * @throws IOException
+     */
     public static void loadTrainer(WortTrainer trainer) throws IOException {
-        // Dateiinhalt als String lesen
         String jsonString = readFileAsString(new java.io.File(".").getCanonicalPath() + FILE_PATH);
 
-        // JSON-Objekt aus dem String parsen
         JSONObject jsonObject = new JSONObject(jsonString);
 
-        // WortEinträge laden
+        // load WortEinträge
         JSONArray wortEintraegeArray = jsonObject.getJSONArray("wortEintraege");
         List<WortEintrag> wortEintragList = new ArrayList<>();
         for (int i = 0; i < wortEintraegeArray.length(); i++) {
             JSONObject wortEintragObj = wortEintraegeArray.getJSONObject(i);
             String word = wortEintragObj.getString("word");
             String url = wortEintragObj.getString("url");
-            String pictureUrl = wortEintragObj.getString("pictureUrl");
 
-            WortEintrag wortEintrag = new WortEintrag(word, url, pictureUrl);
+            WortEintrag wortEintrag = new WortEintrag(word, url);
             wortEintragList.add(wortEintrag);
         }
-        trainer.setWortListe(wortEintragList);  // Geladene Wortliste dem Trainer zuweisen
+        trainer.setWortListe(wortEintragList);
 
-        // Statistik laden
+        // load statistics
         JSONObject statsObj = jsonObject.getJSONObject("statistics");
         int correctAnswers = statsObj.getInt("Correct answers");
         int wrongAnswers = statsObj.getInt("Incorrect answers");
@@ -87,14 +89,11 @@ public class FileHandler {
 
         trainer.setTrainerStats(stats);
     }
-
-    // Hilfsmethode, um eine Datei als String zu lesen
     private static String readFileAsString(String filePath) throws IOException {
         try {
             return new String(Files.readAllBytes(Paths.get(filePath)));
         } catch (Exception e) {
-            System.out.println("Datei konnte nicht geladen werden: " + filePath);
-            e.printStackTrace();
+            System.out.println("Datei konnte nicht geladen werden: " + filePath + ", " + e.getMessage());
         }
         return "";
     }

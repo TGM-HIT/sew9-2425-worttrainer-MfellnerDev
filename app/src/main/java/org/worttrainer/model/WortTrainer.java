@@ -5,8 +5,12 @@ import java.awt.*;
 import java.net.URL;
 import java.util.List;
 
-import static java.lang.System.exit;
-
+/**
+ * Worttrainer game - Guess the word with a simple picture
+ *
+ * @author Manuel Fellner
+ * @version 07.10.2024
+ */
 public class WortTrainer {
 
     private List<WortEintrag> wortListe;
@@ -22,7 +26,7 @@ public class WortTrainer {
     public void start() {
         for (WortEintrag eintrag : wortListe) {
             // Zeige das Bild an
-            ImageIcon imageIcon = loadImageFromURL(eintrag.getPictureUrl());
+            ImageIcon imageIcon = loadImageFromURL(eintrag.getUrl());
             JLabel imageLabel = new JLabel(imageIcon);
 
             // Eingabefeld für die Antwort
@@ -34,11 +38,12 @@ public class WortTrainer {
             panel.add(imageLabel);
             panel.add(inputField);
 
-            // Zeige das Panel in einem JOptionPane
+            // show the question with the picture
             int option = JOptionPane.showConfirmDialog(null, panel, "Welches Tier ist das?", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
             if (option == JOptionPane.OK_OPTION) {
                 String userInput = inputField.getText().trim();
+                // validate user input
                 if (checkAnswer(userInput, eintrag.getWord())) {
                     JOptionPane.showMessageDialog(null, "Richtig!");
                     trainerStats.increaseCorrectAnswers();
@@ -46,27 +51,22 @@ public class WortTrainer {
                     JOptionPane.showMessageDialog(null, "Falsch! Die richtige Antwort war: " + eintrag.getWord());
                     trainerStats.increaseWrongAnswers();
                 }
-
-                // Statistiken aktualisieren
+                // save the statistics
                 updateStats();
             }
-
-            int saveOption = JOptionPane.showConfirmDialog(null, "Möchten Sie den aktuellen Fortschritt speichern?", "Speichern", JOptionPane.YES_NO_OPTION);
-            if (saveOption == JOptionPane.YES_OPTION) {
-                // Fortschritt speichern
-                saveProgress();
-            }
+            // save the progress
+            saveProgress();
         }
     }
 
     private ImageIcon loadImageFromURL(URL imageUrl) {
         try {
             Image image = new ImageIcon(imageUrl).getImage();
-            Image scaledImage = image.getScaledInstance(300, 300, Image.SCALE_SMOOTH); // Skaliere das Bild
+            Image scaledImage = image.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
             return new ImageIcon(scaledImage);
         } catch (Exception e) {
-            e.printStackTrace();
-            return new ImageIcon(); // Leeres Bild im Fehlerfall
+            System.out.println("Error when trying to create a picture from the image url: " + e.getMessage());
+            return new ImageIcon();
         }
     }
 
@@ -83,12 +83,10 @@ public class WortTrainer {
     }
 
     private void saveProgress() {
-        // Verwende FileHandler, um den aktuellen Fortschritt zu speichern
         try {
             FileHandler.saveTrainer(this);
-            JOptionPane.showMessageDialog(null, "Fortschritt erfolgreich gespeichert.");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error when trying to save players progress: " + e.getMessage());
             JOptionPane.showMessageDialog(null, "Speichern fehlgeschlagen.", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }

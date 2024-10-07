@@ -1,5 +1,11 @@
 package org.worttrainer.model;
 
+/**
+ * Statistics for the Worttrainer game
+ *
+ * @author Manuel Fellner
+ * @version 07.10.2024
+ */
 public class TrainerStats {
     private int correctAnswers = 0;
     private int wrongAnswers = 0;

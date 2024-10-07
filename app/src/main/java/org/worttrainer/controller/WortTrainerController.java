@@ -4,19 +4,24 @@ import org.worttrainer.model.FileHandler;
 import org.worttrainer.model.WortTrainer;
 
 import java.io.IOException;
-import java.util.List;
 
+/**
+ * Worttrainer Controller - Controller class for the Worttrainer game
+ *
+ * @author Manuel Fellner
+ * @version 07.10.2024
+ */
 public class WortTrainerController {
 
     public static void main(String[] args) {
         try {
 
-            // Erstelle eine Instanz des WortTrainers
             WortTrainer wortTrainer = new WortTrainer();
-            // Lade die WortEinträge aus der JSON-Datei
+
+            // load the previous data
             FileHandler.loadTrainer(wortTrainer);
 
-            // Starte die GUI (start-Methode im WortTrainer)
+            // start the worttrainer game
             wortTrainer.start();
         } catch (IOException e) {
             e.printStackTrace();
