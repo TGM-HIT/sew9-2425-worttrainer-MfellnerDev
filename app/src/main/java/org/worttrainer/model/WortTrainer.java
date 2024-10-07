@@ -3,6 +3,7 @@ package org.worttrainer.model;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,6 +25,9 @@ public class WortTrainer {
     public WortTrainer() {}
 
     public void start() {
+
+        // shuffle (randomize) the word entries in the list
+        Collections.shuffle(wortListe);
         for (WortEintrag eintrag : wortListe) {
             // Zeige das Bild an
             ImageIcon imageIcon = loadImageFromURL(eintrag.getUrl());
