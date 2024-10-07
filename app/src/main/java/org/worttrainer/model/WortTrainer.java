@@ -9,10 +9,10 @@ import static java.lang.System.exit;
 
 public class WortTrainer {
 
-    private WortListe wortListe;
+    private List<WortEintrag> wortListe;
     private TrainerStats trainerStats;
 
-    public WortTrainer(WortListe wortListe) {
+    public WortTrainer(List<WortEintrag> wortListe) {
         this.wortListe = wortListe;
         this.trainerStats = new TrainerStats();
     }
@@ -20,7 +20,7 @@ public class WortTrainer {
     public WortTrainer() {}
 
     public void start() {
-        for (WortEintrag eintrag : wortListe.getWortListe()) {
+        for (WortEintrag eintrag : wortListe) {
             // Zeige das Bild an
             ImageIcon imageIcon = loadImageFromURL(eintrag.getPictureUrl());
             JLabel imageLabel = new JLabel(imageIcon);
@@ -94,14 +94,14 @@ public class WortTrainer {
     }
 
     public List<WortEintrag> getWortListe() {
-        return wortListe.getWortListe();
+        return wortListe;
     }
 
     public TrainerStats getTrainerStats() {
         return trainerStats;
     }
 
-    public void setWortListe(WortListe wortListe) {
+    public void setWortListe(List<WortEintrag> wortListe) {
         this.wortListe = wortListe;
     }
 

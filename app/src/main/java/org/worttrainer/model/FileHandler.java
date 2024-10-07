@@ -72,8 +72,7 @@ public class FileHandler {
             WortEintrag wortEintrag = new WortEintrag(word, url, pictureUrl);
             wortEintragList.add(wortEintrag);
         }
-        WortListe wListe = new WortListe(wortEintragList);
-        trainer.setWortListe(wListe);  // Geladene Wortliste dem Trainer zuweisen
+        trainer.setWortListe(wortEintragList);  // Geladene Wortliste dem Trainer zuweisen
 
         // Statistik laden
         JSONObject statsObj = jsonObject.getJSONObject("statistics");
