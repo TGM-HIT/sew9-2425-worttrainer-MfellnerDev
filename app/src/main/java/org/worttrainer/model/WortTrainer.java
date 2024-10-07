@@ -110,4 +110,8 @@ public class WortTrainer {
     public void setTrainerStats(TrainerStats trainerStats) {
         this.trainerStats = trainerStats;
     }
+
+    public void addWortEintrag(WortEintrag wortEintrag) {
+        wortListe.add(wortEintrag);
+    }
 }

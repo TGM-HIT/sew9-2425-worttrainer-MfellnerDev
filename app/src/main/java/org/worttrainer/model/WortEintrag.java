@@ -15,25 +15,30 @@ public class WortEintrag {
     private URL url;
 
     public WortEintrag(String word, String url) {
-        if (word == null || word.isEmpty() && url == null || !this.checkUrl(url)) {
-            throw new IllegalArgumentException("Word or URL Invalid/Empty!");
+        if (word == null || word.isEmpty()) {
+            throw new IllegalArgumentException("Word cannot be null or empty!");
         }
-        try  {
+        if (url == null || !this.checkUrl(url)) {
+            throw new IllegalArgumentException("URL is invalid!");
+        }
+        try {
             this.word = word;
             this.url = new URL(url);
-        } catch (MalformedURLException e)  {
-            System.out.println("Error! Could not parse the URL");
+        } catch (MalformedURLException e) {
+            throw new IllegalArgumentException("Malformed URL provided!", e);
         }
     }
 
-    public boolean checkUrl(String url)  {
-        try  {
-            new URI(url);
+
+    public boolean checkUrl(String url) {
+        try {
+            new URL(url);
             return true;
-        }  catch (Exception e) {
+        } catch (MalformedURLException e) {
             return false;
         }
     }
+
 
     public String getWord() {
         return word;
