@@ -17,7 +17,7 @@ import java.util.List;
 public class FileHandler {
 
     // Pfad zur Datei
-    private static final String FILE_PATH = "./app/src/main/resources/wortEintraege.json";
+    private static final String FILE_PATH = "/src/main/resources/wortEintraege.json";
 
     // Trainer-Daten speichern (Wortliste und Statistik)
     public static void saveTrainer(WortTrainer trainer) throws IOException {
@@ -44,7 +44,7 @@ public class FileHandler {
         trainerObj.put("statistics", statsObj);
 
         // In Datei schreiben
-        try (FileWriter file = new FileWriter(FILE_PATH)) {
+        try (FileWriter file = new FileWriter(new java.io.File(".").getCanonicalPath() + FILE_PATH)) {
             file.write(trainerObj.toString(4));  // Formatierter JSON-Output
             System.out.println("Worttrainer erfolgreich gespeichert!");
         } catch (IOException e) {
@@ -55,7 +55,7 @@ public class FileHandler {
     // Trainer-Daten laden (Wortliste und Statistik)
     public static void loadTrainer(WortTrainer trainer) throws IOException {
         // Dateiinhalt als String lesen
-        String jsonString = readFileAsString(FILE_PATH);
+        String jsonString = readFileAsString(new java.io.File(".").getCanonicalPath() + FILE_PATH);
 
         // JSON-Objekt aus dem String parsen
         JSONObject jsonObject = new JSONObject(jsonString);

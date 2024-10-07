@@ -1,8 +1,6 @@
 package org.worttrainer.controller;
 
 import org.worttrainer.model.FileHandler;
-import org.worttrainer.model.WortEintrag;
-import org.worttrainer.model.WortListe;
 import org.worttrainer.model.WortTrainer;
 
 import java.io.IOException;
