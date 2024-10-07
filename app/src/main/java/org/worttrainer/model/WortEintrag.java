@@ -14,7 +14,7 @@ public class WortEintrag {
     private String word;
     private URL url;
 
-    public WortEintrag(String word, String url) throws MalformedURLException {
+    public WortEintrag(String word, String url) {
         if (word == null || word.isEmpty() && url == null || !this.checkUrl(url)) {
             throw new IllegalArgumentException("Word or URL Invalid/Empty!");
         }
