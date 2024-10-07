@@ -80,3 +80,16 @@ Ermögliche es, den Worttrainer über eine grafische Oberfläche zu benutzen. Es
 - Zum Schluss wird der aktuelle Zustand des Worttrainers persistiert.
 
 Andere GUI-Technologien sind auch erlaubt, wenn eine zumindest gleichwertige Funktionalität gewährleistet ist.
+
+## Dokumentation des Projektes
+
+Der WortTrainer ist eine Java-basierte Anwendung, die Schülern hilft, Rechtschreibung zu üben, indem sie Wörter zu Bildern eingeben und deren Korrektheit überprüft wird. Die Anwendung ist Teil einer SEW-Übung und setzt den Fokus auf den Softwareentwicklungsprozess unter Verwendung von Git, Gradle und weiteren Entwicklungswerkzeugen.
+
+### Technologien
+
+- Java: Hauptprogrammiersprache
+- Gradle (Kotlin): Build system
+- JSON: Daten werden im JSON-Format gespeichert und geladen
+- Github: Versionierungssoftware und Speicherung
+- JUnit: Für automatisierte Tests
+
