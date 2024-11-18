@@ -44,3 +44,11 @@ tasks.jar {
         )
     }
 }
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
