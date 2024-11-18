@@ -35,11 +35,11 @@ jobs:
 
       # Step 4: Build the project with Gradle and generate the JAR
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew shadowJar
 
       # Step 5: Upload the generated JAR as an artifact
       - name: Upload JAR file
         uses: actions/upload-artifact@v4
         with:
           name: Worttrainer
-          path: app/build/libs/*.jar
+          path: app/build/libs/*-all.jar
