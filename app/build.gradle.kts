@@ -1,7 +1,6 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
-    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 repositories {
@@ -44,9 +43,3 @@ tasks.jar {
         )
     }
 }
-sourceSets {
-    val main by getting {
-        resources.srcDir("src/main/resources")
-    }
-}
-
