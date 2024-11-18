@@ -44,11 +44,9 @@ tasks.jar {
         )
     }
 }
-
 sourceSets {
-    main {
-        resources {
-            srcDir 'src/main/resources'
-        }
+    val main by getting {
+        resources.srcDir("src/main/resources")
     }
 }
+
